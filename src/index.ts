@@ -2,7 +2,8 @@ import { execa } from 'execa'
 import mri from 'mri'
 import process from 'node:process'
 import { resolve } from 'import-meta-resolve'
-import chokidar from 'chokidar'
+import { watch as cWatch } from 'chokidar'
+import { debounce } from 'perfect-debounce'
 
 interface Options {
   _: string[]
@@ -37,9 +38,20 @@ async function run() {
   isRunning = false
 }
 
+const reRun = debounce(async () => {
+  await run()
+}, 100)
+
 function setupWatcher() {
-  const watcher = chokidar.watch(watch)
-  watcher.on('change', () => { run() })
+  const watcher = cWatch(watch, {
+    ignoreInitial: true,
+    ignorePermissionErrors: true,
+    ignored: (id) => {
+      return id.includes('/.git/') || id.includes('/node_modules/')
+    },
+  })
+
+  watcher.on('all', () => { reRun() })
   return watcher
 }
 
