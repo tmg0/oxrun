@@ -31,18 +31,13 @@ pnpm add oxrun -D
 ## Benchmark
 
 ```bash
-clk: ~3.26 GHz
-cpu: Apple M2
-runtime: node (arm64-darwin)
+  name        hz     min     max     mean      p75     p99    p995    p999       rme  samples
+· oxrun  80.3557  0.7746  344.68  12.4447   8.3993  344.68  344.68  344.68   ±96.31%       57   fastest
+· jiti   40.5265  0.5379  250.22  24.6752  19.4873  250.22  250.22  250.22   ±98.67%       22
+· tsx    24.7916  2.4523  381.93  40.3363  13.3386  381.93  381.93  381.93  ±144.29%       14   slowest
 
-benchmark              avg (min … max) p75   p99    (min … top 1%)
--------------------------------------- -------------------------------
-oxrun                   119.05 ms/iter 119.02 ms █            █
-               (118.84 ms … 119.39 ms) 119.02 ms █▁▁▁▁▁▁▁▁▁▁▁▁█▁▁▁▁▁▁▁
-jiti                    105.23 ms/iter 105.43 ms ██             █
-               (104.87 ms … 105.63 ms) 105.43 ms ██▁▁▁▁▁▁▁▁▁▁▁▁▁█▁▁▁▁▁
-tsx                     140.53 ms/iter 140.77 ms █             █  █
-               (139.82 ms … 140.96 ms) 140.77 ms █▁▁▁▁▁▁▁▁▁▁▁▁▁█▁▁█▁▁▁
+1.98x faster than jiti
+3.24x faster than tsx
 ```
 
 ## License
