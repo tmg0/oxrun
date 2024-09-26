@@ -1,32 +1,32 @@
 import { execa } from 'execa'
 import { bench, describe } from 'vitest'
 
-function runOxrunCommand(path: string) {
+function runOxrunCommand(path = '') {
   return execa('node', [
     './bin/oxrun.js',
     path,
   ])
 }
 
-function runJitiCommand(path: string) {
+function runJitiCommand(path = '') {
   return execa('jiti', [
     path,
     '--fs-cache',
     'false',
     '--module-cache',
-    'false'
+    'false',
   ])
 }
 
-function runTsxCommand(path: string) {
+function runTsxCommand(path = '') {
   return execa('tsx', [
     path,
     '--no-cache',
-    'true'
+    'true',
   ])
 }
 
-function runTsNodeCommand(path: string) {
+function runTsNodeCommand(path = '') {
   return execa('ts-node', [path])
 }
 
