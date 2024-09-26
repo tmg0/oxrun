@@ -30,9 +30,9 @@ pnpm add oxrun -D
 
 ## Benchmark
 
-> clk: ~3.26 GHz
-cpu: Apple M2
-runtime: node (arm64-darwin)
+- clk: `~3.26 GHz`
+- cpu: `Apple M2`
+- runtime: `node (arm64-darwin)`
 
 ```bash
   name        hz     min     max     mean      p75     p99    p995    p999       rme  samples
