@@ -7,7 +7,7 @@ export default defineConfig({
     mainFields: ['module', 'main'],
   },
   platform: 'node',
-  external: ['@oxc-node/core', 'execa', 'import-meta-resolve', 'mri'],
+  external: ['@oxc-node/core', 'execa', 'import-meta-resolve', 'mri', 'chokidar'],
   treeshake: true,
   output: {
     format: 'esm',

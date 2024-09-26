@@ -32,6 +32,13 @@ pnpm add oxrun -D
 }
 ```
 
+## Props
+
+### `props.watch`
+
+- Type: `false | string`
+- Default: `false`
+
 ## Benchmark
 
 ```bash
@@ -39,15 +46,16 @@ clk: ~3.26 GHz
 cpu: Apple M2
 runtime: node (arm64-darwin)
 
-  name                 hz     min     max     mean      p75     p99    p995    p999      rme  samples
-· oxrun           48.0401  0.6927  273.39  20.8159  24.0320  273.39  273.39  273.39  ±84.55%       31   fastest
-· jiti (no-cache) 36.8400  0.4853  227.23  27.1444  20.8850  227.23  227.23  227.23  ±93.90%       20
-· tsx (no-cache)  34.8837  1.8106  179.26  28.6667  28.0759  179.26  179.26  179.26  ±82.73%       18   slowest
-· ts-node         38.0139  0.6208  183.45  26.3062  10.2737  183.45  183.45  183.45  ±86.21%       20
+  name                  hz     min     max     mean      p75     p99    p995    p999       rme  samples
+· oxrun            71.5572  1.1639  137.01  13.9748  16.0956  137.01  137.01  137.01   ±50.84%       40   fastest
+· jiti (no-cache)  49.6227  0.6183  241.34  20.1521   9.4016  241.34  241.34  241.34   ±88.54%       30
+· tsx (no-cache)   40.5017  2.3162  234.52  24.6903  16.3226  234.52  234.52  234.52   ±89.86%       23
+· ts-node          19.4521  3.0683  238.53  51.4084  38.0820  238.53  238.53  238.53  ±104.82%       10   slowest
 
-1.26x faster than ts-node
-1.30x faster than jiti (no-cache)
-1.38x faster than tsx (no-cache)
+oxrun
+1.44x faster than jiti (no-cache)
+1.77x faster than tsx (no-cache)
+3.68x faster than ts-node
 ```
 
 ## License

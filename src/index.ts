@@ -1,23 +1,50 @@
 import { execa } from 'execa'
 import mri from 'mri'
 import process from 'node:process'
-import { resolve as resolveImport } from 'import-meta-resolve'
+import { resolve } from 'import-meta-resolve'
+import chokidar from 'chokidar'
+
+interface Options {
+  _: string[]
+  watch: string
+}
 
 const argv = process.argv.slice(2)
-const { _: scripts } = mri(argv)
+
+const { _: scripts, watch } = mri<Options>(argv, {
+  default: {
+    watch: 'false'
+  }
+})
+
+let isRunning = false
 
 function runNodeCommand(args: (string | string[])[] = []) {
   return execa('node', args.flat(), { stdio: 'inherit' })
 }
 
-export function main() {
+async function run() {
   if (!scripts.length)
     return
 
-  const path = resolveImport('@oxc-node/core/register', import.meta.url)
+  const path = resolve('@oxc-node/core/register', import.meta.url)
 
-  runNodeCommand([
+  isRunning = true
+  await runNodeCommand([
     ['--import', path],
     scripts
   ])
+  isRunning = false
+}
+
+function setupWatcher() {
+  const watcher = chokidar.watch(watch)
+  watcher.on('change', () => { run() })
+  return watcher
+}
+
+export async function main() {
+  if (watch && watch !== 'false')
+    setupWatcher()
+  await run()
 }

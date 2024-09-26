@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@oxc-node/core": "^0.0.15",
+    "chokidar": "^4.0.1",
     "execa": "^9.4.0",
     "import-meta-resolve": "^4.1.0",
     "mri": "^1.2.0"
