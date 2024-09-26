@@ -9,11 +9,23 @@ function runOxrunCommand(path: string) {
 }
 
 function runJitiCommand(path: string) {
-  return execa('jiti', [path])
+  return execa('jiti', [
+    path,
+    '--module-cache',
+    'false'
+  ])
 }
 
 function runTsxCommand(path: string) {
-  return execa('tsx', [path])
+  return execa('tsx', [
+    path,
+    '--no-cache',
+    'true'
+  ])
+}
+
+function runTsNodeCommand(path: string) {
+  return execa('ts-node', [path])
 }
 
 describe('fibonacci', async () => {
@@ -25,7 +37,11 @@ describe('fibonacci', async () => {
     runJitiCommand('./test/fixtures/fibonacci.ts')
   })
 
-  bench('tsx', () => {
+  bench('tsx (no-cache)', () => {
     runTsxCommand('./test/fixtures/fibonacci.ts')
+  })
+
+  bench('ts-node', () => {
+    runTsNodeCommand('./test/fixtures/fibonacci.ts')
   })
 })
