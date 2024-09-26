@@ -11,6 +11,8 @@ function runOxrunCommand(path: string) {
 function runJitiCommand(path: string) {
   return execa('jiti', [
     path,
+    '--fs-cache',
+    'false',
     '--module-cache',
     'false'
   ])
@@ -33,7 +35,7 @@ describe('fibonacci', async () => {
     runOxrunCommand('./test/fixtures/fibonacci.ts')
   })
 
-  bench('jiti', () => {
+  bench('jiti (no-cache)', () => {
     runJitiCommand('./test/fixtures/fibonacci.ts')
   })
 
