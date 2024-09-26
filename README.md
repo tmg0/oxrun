@@ -1,6 +1,8 @@
 # oxrun
 
-⚓ Typescript node runtime powered by [oxc-node](https://github.com/oxc-project/oxc)
+[![NPM version](https://img.shields.io/npm/v/oxrun)](https://www.npmjs.com/package/oxrun)
+
+⚓ Typescript node runtime powered by [oxc-node](https://github.com/oxc-project/oxc-node)
 
 ## Feature
 
