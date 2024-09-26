@@ -1,7 +1,7 @@
 {
   "name": "oxrun",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Typescript node runtime powered by oxc-node",
   "author": "tmg0",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "oxrun": "bin/oxrun.js"
   },
   "scripts": {
-    "build": "rolldown -c rolldown.config.mjs",
+    "build": "rolldown -c rolldown.config.mjs --minify",
     "test": "vitest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
