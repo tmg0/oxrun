@@ -32,13 +32,11 @@ pnpm add oxrun -D
 
 ## Benchmark
 
-clk: `~3.26 GHz`
-
-cpu: `Apple M2`
-
-runtime: `node (arm64-darwin)`
-
 ```bash
+clk: ~3.26 GHz
+cpu: Apple M2
+runtime: node (arm64-darwin)
+
   name        hz     min     max     mean      p75     p99    p995    p999       rme  samples
 · oxrun  80.3557  0.7746  344.68  12.4447   8.3993  344.68  344.68  344.68   ±96.31%       57   fastest
 · jiti   40.5265  0.5379  250.22  24.6752  19.4873  250.22  250.22  250.22   ±98.67%       22
