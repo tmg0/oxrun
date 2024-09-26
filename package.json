@@ -27,7 +27,8 @@
     "build": "rolldown -c rolldown.config.mjs --minify",
     "test": "vitest",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "bench": "node test/bench.js"
   },
   "dependencies": {
     "@oxc-node/core": "^0.0.15",
@@ -39,7 +40,10 @@
     "@antfu/eslint-config": "^3.7.1",
     "@types/node": "^22.7.0",
     "eslint": "^9.11.1",
+    "jiti": "^2.0.0",
+    "mitata": "^1.0.6",
     "rolldown": "^0.13.2",
-    "tsup": "^8.3.0"
+    "tsup": "^8.3.0",
+    "tsx": "^4.19.1"
   }
 }
