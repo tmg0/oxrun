@@ -2,7 +2,7 @@ import type { OxrunContext } from './types'
 import { watch } from 'chokidar'
 import { debounce } from 'perfect-debounce'
 
-export function setupWatcher(ctx: OxrunContext) {
+export function createWatcher(ctx: OxrunContext) {
   const reRun = debounce(() => {
     ctx.run()
   }, 100)
