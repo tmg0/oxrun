@@ -44,9 +44,9 @@ pnpm add oxrun -D
 - Type: `false | string`
 - Default: `false`
 
-You can also use `oxrun` as a module, for import or transform `ts` files.
-
 ### `oxrun.import`
+
+You can also use `oxrun` as a module, for import / transform `ts` files.
 
 - Type: `() => Module`
 
