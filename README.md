@@ -50,7 +50,7 @@ import oxrun from 'oxrun'
 (async () => {
   await oxrun('./hello.ts') // output: hello
   const mod = await oxrun.import('./hello.ts')
-  console.log(mod.default)  // output: hello
+  console.log(mod.default) // output: hello
 })()
 ```
 
@@ -66,10 +66,14 @@ import oxrun from 'oxrun'
 - Type: `false | string`
 - Default: `false`
 
+### `props.ignore`
+
+- Type: `string`
+- Default: `undefined`
+
 ## Benchmark
 
 ```bash
-clk: ~3.26 GHz
 cpu: Apple M2
 runtime: node (arm64-darwin)
 
