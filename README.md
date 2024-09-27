@@ -34,10 +34,39 @@ pnpm add oxrun -D
 
 ## Props
 
+### `props.scripts`
+
+- Type: `string[] | string`
+- Default: `''`
+
 ### `props.watch`
 
 - Type: `false | string`
 - Default: `false`
+
+You can also use `oxrun` as a module, for import or transform `ts` files.
+
+### `oxrun.import`
+
+- Type: `() => Module`
+
+```ts
+// hello.ts
+const msg = 'hello'
+console.log(msg)
+export default msg
+```
+
+```ts
+// entry.js
+import oxrun from 'oxrun'
+
+(async () => {
+  await oxrun('./hello.ts') // output: hello
+  const mod = await oxrun.import('./hello.ts')
+  console.log(mod.default)  // output: hello
+})()
+```
 
 ## Benchmark
 

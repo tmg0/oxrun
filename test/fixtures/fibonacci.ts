@@ -6,4 +6,6 @@ function fibonacci(n: number): number {
   return fibonacci(n - 1) + fibonacci(n - 2)
 }
 
-logger.log(fibonacci(10))
+export const result = fibonacci(10)
+logger.log(result)
+export default fibonacci(10)
