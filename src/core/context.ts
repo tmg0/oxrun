@@ -1,7 +1,7 @@
 import type { Options } from './types'
 import { resolve } from 'import-meta-resolve'
 import { runNodeCommand } from './node'
-import { setupWatcher } from './watch'
+import { createWatcher } from './watch'
 
 export function createContext(options: Options) {
   let isRunning = false
@@ -15,7 +15,7 @@ export function createContext(options: Options) {
 
   function setup() {
     if (options.watch)
-      setupWatcher(ctx)
+      createWatcher(ctx)
   }
 
   async function run() {
