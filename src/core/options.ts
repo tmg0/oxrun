@@ -5,7 +5,7 @@ import mri from 'mri'
 
 const argv = process.argv.slice(2)
 
-const { _: scripts, watch } = mri<Record<string, string>>(argv, {
+const { _: scripts, watch, root } = mri<Record<string, string>>(argv, {
   default: {
     watch: 'false',
   },
@@ -14,6 +14,7 @@ const { _: scripts, watch } = mri<Record<string, string>>(argv, {
 export function resolveOptions(): Options {
   return {
     scripts,
+    root: root ?? process.cwd(),
 
     watch: (() => {
       const r = destr<boolean | string>(watch)
