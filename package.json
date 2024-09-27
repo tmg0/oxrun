@@ -1,7 +1,7 @@
 {
   "name": "oxrun",
   "type": "module",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Typescript node runtime powered by oxc-node",
   "author": "tmg0",
   "license": "MIT",
