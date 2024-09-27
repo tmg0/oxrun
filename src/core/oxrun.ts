@@ -3,7 +3,7 @@ import { promises as fs } from 'node:fs'
 import { resolve } from 'node:path'
 import process from 'node:process'
 import { transform } from '@oxc-node/core'
-import { nanoid } from 'nanoid'
+import { hash } from 'ohash'
 import { createContext } from './context'
 
 export const oxrun = Object.assign(
@@ -31,11 +31,16 @@ export const oxrun = Object.assign(
 
     async import<T = any>(id: string) {
       const { code } = await this.transform(id)
-      const outfile = resolve(process.cwd(), `oxrun.${nanoid()}.mjs`)
-      await fs.writeFile(outfile, code, 'utf8')
-      const mod = await import(outfile)
-      fs.unlink(outfile)
-      return mod as T
+      const outfile = resolve(process.cwd(), `oxrun.${hash(code)}.mjs`)
+
+      try {
+        await fs.writeFile(outfile, code, 'utf8')
+        const mod = await import(outfile)
+        return mod as T
+      }
+      finally {
+        fs.unlink(outfile)
+      }
     },
   },
 )

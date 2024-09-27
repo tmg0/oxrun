@@ -1,3 +1,4 @@
+import type { FSWatcher } from 'chokidar'
 import type { Options } from './types'
 import { resolve } from 'import-meta-resolve'
 import { runNodeCommand } from './node'
@@ -5,17 +6,19 @@ import { createWatcher } from './watch'
 
 export function createContext(options: Options) {
   let isRunning = false
+  let watcher: FSWatcher | undefined
 
   const ctx = {
     options,
     isRunning,
+    watcher,
     setup,
     run,
   }
 
   function setup() {
     if (options.watch && options.watch.length)
-      createWatcher(ctx)
+      watcher = createWatcher(ctx)
   }
 
   async function run() {
