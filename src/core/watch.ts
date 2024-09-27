@@ -7,17 +7,23 @@ export function createWatcher(ctx: OxrunContext) {
     ctx.run()
   }, 100)
 
+  const excludes = [
+    '.git',
+    'node_modules',
+
+    ...ctx.options.ignore?.filter(Boolean) as string[],
+  ]
+
   const watcher = watch(ctx.options.watch as string[], {
     ignoreInitial: true,
     ignorePermissionErrors: true,
-    ignored: (id) => {
-      return id.includes('/.git/') || id.includes('/node_modules/')
-    },
+    ignored: [
+      id => /oxrun\.[\s\S]*?\.mjs$/.test(id),
+      id => excludes.some(v => id.includes(v)),
+    ],
   })
 
-  watcher.on('all', () => {
-    reRun()
-  })
+  watcher.on('all', reRun)
 
   return watcher
 }

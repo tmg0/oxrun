@@ -22,7 +22,9 @@ export function resolveOptions(): Options {
       const r = encodeGlobs.map(glob => destr<boolean | string>(glob))
       if (r.includes(false))
         return false
-      return r.filter(v => !['', true].includes(v)) as string[]
+      if (r.some(v => ['', true].includes(v)))
+        return [process.cwd()]
+      return r as string[]
     },
   }
 }
