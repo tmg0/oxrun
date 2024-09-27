@@ -20,6 +20,7 @@
     "runtime"
   ],
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "oxrun": "bin/oxrun.js"
   },
@@ -28,8 +29,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsdown --watch",
-    "build": "tsdown",
+    "dev": "tsup --watch",
+    "build": "tsup",
     "test": "vitest",
     "bench": "vitest bench",
     "lint": "eslint .",
@@ -51,7 +52,7 @@
     "eslint": "^9.11.1",
     "jiti": "^2.0.0",
     "ts-node": "^10.9.2",
-    "tsdown": "^0.2.16",
+    "tsup": "^8.3.0",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",
     "vitest": "^2.1.1"

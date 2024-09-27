@@ -36,13 +36,13 @@ export const oxrun = Object.assign(
       }
     },
 
-    async import(id: string) {
+    async import<T = any>(id: string) {
       const { code } = await this.transform(resolve(id))
       const outfile = `./oxrum.${nanoid()}.mjs`
       await fs.writeFile(outfile, code, 'utf8')
       const mod = await import(outfile)
       fs.unlink(outfile)
-      return mod
+      return mod as T
     },
   },
 )
