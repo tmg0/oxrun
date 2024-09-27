@@ -1,6 +1,5 @@
 import type { Options } from './core/types'
 import { promises as fs } from 'node:fs'
-import { resolve } from 'node:path'
 import { transform } from '@oxc-node/core'
 import { nanoid } from 'nanoid'
 import { createContext } from './core/context'
@@ -37,7 +36,7 @@ export const oxrun = Object.assign(
     },
 
     async import<T = any>(id: string) {
-      const { code } = await this.transform(resolve(id))
+      const { code } = await this.transform(id)
       const outfile = `./oxrun.${nanoid()}.mjs`
       await fs.writeFile(outfile, code, 'utf8')
       const mod = await import(outfile)
