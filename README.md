@@ -14,6 +14,8 @@
 
 ## Usage
 
+### `CLI`
+
 ```bash
 npx oxrun hello.ts
 ```
@@ -32,6 +34,28 @@ pnpm add oxrun -D
 }
 ```
 
+### `Programmatic`
+
+**Import**
+
+```ts
+// hello.ts
+const msg = 'hello'
+console.log(msg)
+export default msg
+```
+
+```js
+// entry.js
+import oxrun from 'oxrun'
+
+(async () => {
+  await oxrun('./hello.ts') // output: hello
+  const mod = await oxrun.import('./hello.ts')
+  console.log(mod.default)  // output: hello
+})()
+```
+
 ## Props
 
 ### `props.scripts`
@@ -43,30 +67,6 @@ pnpm add oxrun -D
 
 - Type: `false | string`
 - Default: `false`
-
-### `oxrun.import`
-
-You can also use `oxrun` as a module, for import / transform `ts` files.
-
-- Type: `() => Module`
-
-```ts
-// hello.ts
-const msg = 'hello'
-console.log(msg)
-export default msg
-```
-
-```ts
-// entry.js
-import oxrun from 'oxrun'
-
-(async () => {
-  await oxrun('./hello.ts') // output: hello
-  const mod = await oxrun.import('./hello.ts')
-  console.log(mod.default)  // output: hello
-})()
-```
 
 ## Benchmark
 
