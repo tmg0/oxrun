@@ -5,7 +5,7 @@ import mri from 'mri'
 
 const argv = process.argv.slice(2)
 
-const { _: scripts, watch, ignore } = mri<Record<string, string | string[]>>(argv, {
+const { _: scripts, watch, root, ignore } = mri<Record<string, string | string[]>>(argv, {
   default: {
     watch: 'false',
     ignore: '',
@@ -15,6 +15,7 @@ const { _: scripts, watch, ignore } = mri<Record<string, string | string[]>>(arg
 export function resolveOptions(): Options {
   return {
     scripts,
+    root: [root].flat()[0] ?? process.cwd(),
     ignore: [ignore].flat().filter(Boolean),
     get watch() {
       const encodeGlobs = [watch].flat()
