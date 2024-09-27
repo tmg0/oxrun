@@ -7,7 +7,7 @@ export function createWatcher(ctx: OxrunContext) {
     ctx.run()
   }, 100)
 
-  const watcher = watch(ctx.options.watch as string, {
+  const watcher = watch(ctx.options.watch as string[], {
     ignoreInitial: true,
     ignorePermissionErrors: true,
     ignored: (id) => {

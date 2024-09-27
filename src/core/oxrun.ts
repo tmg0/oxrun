@@ -6,7 +6,7 @@ import { createContext } from './context'
 
 export const oxrun = Object.assign(
   async (scripts: string | string[]) => {
-    const options: Options = { scripts: [scripts].flat(), watch: false }
+    const options: Options = { scripts: [scripts].flat(), watch: false, ignore: [] }
     const ctx = createContext(options)
     await ctx.run()
   },
