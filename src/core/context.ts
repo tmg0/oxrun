@@ -14,7 +14,7 @@ export function createContext(options: Options) {
   }
 
   function setup() {
-    if (options.watch)
+    if (options.watch && options.watch.length)
       createWatcher(ctx)
   }
 
