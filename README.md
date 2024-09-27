@@ -36,8 +36,6 @@ pnpm add oxrun -D
 
 ### `Programmatic`
 
-**Import**
-
 ```ts
 // hello.ts
 const msg = 'hello'
