@@ -25,7 +25,8 @@ export function createContext(options: Options) {
     if (!options.scripts.length)
       return
 
-    const path = resolve('@oxc-node/core/register', import.meta.url)
+    const register = '@oxc-node/core/register'
+    const path = resolve(register, import.meta.url)
 
     isRunning = true
     await runNodeCommand(['--import', path, options.scripts])

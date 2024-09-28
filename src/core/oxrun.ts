@@ -31,7 +31,7 @@ export const oxrun = Object.assign(
 
     async import<T = any>(id: string) {
       const { code } = await this.transform(id)
-      const outfile = resolve(process.cwd(), `oxrun.${hash(code)}.mjs`)
+      const outfile = resolve(process.cwd(), `oxrun.${hash({ id, code })}.mjs`)
 
       try {
         await fs.writeFile(outfile, code, 'utf8')

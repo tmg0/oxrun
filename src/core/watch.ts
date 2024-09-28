@@ -1,4 +1,5 @@
 import type { OxrunContext } from './types'
+import process from 'node:process'
 import { watch } from 'chokidar'
 import { debounce } from 'perfect-debounce'
 
@@ -24,6 +25,10 @@ export function createWatcher(ctx: OxrunContext) {
   })
 
   watcher.on('all', reRun)
+
+  process.on('exit', () => {
+    ctx.watcher?.close()
+  })
 
   return watcher
 }

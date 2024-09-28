@@ -56,11 +56,6 @@ import oxrun from 'oxrun'
 
 ## Props
 
-### `props.scripts`
-
-- Type: `string[] | string`
-- Default: `''`
-
 ### `props.watch`
 
 - Type: `false | string`
