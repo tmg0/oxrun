@@ -6,11 +6,13 @@
 
 ## Feature
 
-🚀 Super fast typescript parser
+🚀 Super fast typescript transformer by [oxc](https://github.com/oxc-project/oxc)
 
-🥞 Run ts / esm with a single command
+🧭 Run ts with a single command
 
 🙅 No installation required
+
+👜 Import ts in js as a module
 
 ## Usage
 
