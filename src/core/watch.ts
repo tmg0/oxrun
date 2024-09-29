@@ -5,6 +5,8 @@ import { debounce } from 'perfect-debounce'
 
 export function createWatcher(ctx: OxrunContext) {
   const reRun = debounce(() => {
+    if (ctx.isRunning)
+      ctx.abort()
     ctx.run()
   }, 100)
 

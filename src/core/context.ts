@@ -23,16 +23,21 @@ export function createContext(options: Options) {
   }
 
   async function run() {
-    if (!options.scripts.length)
-      return
+    try {
+      if (!options.scripts.length)
+        return
 
-    const register = '@oxc-node/core/register'
-    const path = resolve(register, import.meta.url)
-    const { controller, subprocess } = runNodeCommand(['--import', path, options.scripts])
-    _controller = controller
-    ctx.isRunning = true
-    await subprocess
-    ctx.isRunning = false
+      const register = '@oxc-node/core/register'
+      const path = resolve(register, import.meta.url)
+      const { controller, subprocess } = runNodeCommand(['--import', path, options.scripts])
+      _controller = controller
+      ctx.isRunning = true
+      await subprocess
+      ctx.isRunning = false
+    }
+    catch {
+      ctx.isRunning = false
+    }
   }
 
   function abort() {

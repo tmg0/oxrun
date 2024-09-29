@@ -5,7 +5,6 @@ export function runNodeCommand(args: (string | string[])[] = []) {
 
   const subprocess = execa('node', args.flat(), {
     cancelSignal: controller.signal,
-    gracefulCancel: true,
     stdio: 'inherit',
   })
 
