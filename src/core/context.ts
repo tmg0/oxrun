@@ -5,20 +5,21 @@ import { runNodeCommand } from './node'
 import { createWatcher } from './watch'
 
 export function createContext(options: Options) {
-  let isRunning = false
   let watcher: FSWatcher | undefined
+  let _controller: AbortController | undefined
 
   const ctx = {
     options,
-    isRunning,
+    isRunning: false,
     watcher,
     setup,
     run,
+    abort,
   }
 
   function setup() {
     if (options.watch && options.watch.length)
-      watcher = createWatcher(ctx)
+      ctx.watcher = createWatcher(ctx)
   }
 
   async function run() {
@@ -27,10 +28,16 @@ export function createContext(options: Options) {
 
     const register = '@oxc-node/core/register'
     const path = resolve(register, import.meta.url)
+    const { controller, subprocess } = runNodeCommand(['--import', path, options.scripts])
+    _controller = controller
+    ctx.isRunning = true
+    await subprocess
+    ctx.isRunning = false
+  }
 
-    isRunning = true
-    await runNodeCommand(['--import', path, options.scripts])
-    isRunning = false
+  function abort() {
+    _controller?.abort()
+    ctx.isRunning = false
   }
 
   return ctx
