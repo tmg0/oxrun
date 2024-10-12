@@ -11,6 +11,9 @@ importers:
       '@oxc-node/core':
         specifier: ^0.0.15
         version: 0.0.15
+      '@oxc-node/core-wasm32-wasi':
+        specifier: ^0.0.15
+        version: 0.0.15
       chokidar:
         specifier: ^4.0.1
         version: 4.0.1
@@ -2633,17 +2636,14 @@ snapshots:
     dependencies:
       '@emnapi/wasi-threads': 1.0.1
       tslib: 2.7.0
-    optional: true
 
   '@emnapi/runtime@1.2.0':
     dependencies:
       tslib: 2.7.0
-    optional: true
 
   '@emnapi/wasi-threads@1.0.1':
     dependencies:
       tslib: 2.7.0
-    optional: true
 
   '@es-joy/jsdoccomment@0.48.0':
     dependencies:
@@ -2895,7 +2895,6 @@ snapshots:
       '@emnapi/core': 1.2.0
       '@emnapi/runtime': 1.2.0
       '@tybys/wasm-util': 0.9.0
-    optional: true
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -2948,7 +2947,6 @@ snapshots:
   '@oxc-node/core-wasm32-wasi@0.0.15':
     dependencies:
       '@napi-rs/wasm-runtime': 0.2.4
-    optional: true
 
   '@oxc-node/core-win32-arm64-msvc@0.0.15':
     optional: true
@@ -3058,7 +3056,6 @@ snapshots:
   '@tybys/wasm-util@0.9.0':
     dependencies:
       tslib: 2.7.0
-    optional: true
 
   '@types/debug@4.1.12':
     dependencies:

@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@oxc-node/core": "^0.0.15",
+    "@oxc-node/core-wasm32-wasi": "^0.0.15",
     "chokidar": "^4.0.1",
     "destr": "^2.0.3",
     "execa": "^9.4.0",
